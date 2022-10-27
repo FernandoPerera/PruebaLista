@@ -20,6 +20,10 @@ export default function App() {
 
   }
 
+  const clearList = () => {
+    setProductList( '' )
+  }
+
   return (
     <View style={styles.container}>
       
@@ -45,15 +49,13 @@ export default function App() {
 
       </View>
 
-      <Pressable style={styles.clearContainer}>
+      <Pressable style={styles.clearContainer} onPress={clearList}>
+                <View style={styles.clearList}>
 
-        <View style={styles.clearList}>
+                  <Text style={{fontSize: 19}}>Clear</Text>
 
-          <Text>Clear</Text>
-
-        </View>
-
-      </Pressable>
+                </View>
+        </Pressable>
 
 
     </View>
