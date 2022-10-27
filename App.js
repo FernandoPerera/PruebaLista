@@ -1,7 +1,8 @@
 import { useState } from 'react'
-
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Pressable } from 'react-native';
 import ProductInput from './components/ProductInput';
+
+import ListItem from './components/ListItem';
 
 export default function App() {
 
@@ -27,7 +28,21 @@ export default function App() {
 
       <View style={styles.product}>
 
-        <Text>List Item</Text>
+      <ScrollView>
+              
+              {productList.length == 0
+                ? <View style={styles.emptyList}>
+                    <Text style={styles.emptyText}>Aún no hay productos</Text>
+                  </View>
+
+                : productList.map( (product, index) => (
+                  <ListItem
+                    key={index}
+                    productName={product.name}
+                    productQuantity={product.quantity}/>
+                  ))}
+            
+          </ScrollView>
 
       </View>
 
