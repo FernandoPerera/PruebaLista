@@ -1,12 +1,27 @@
+import { useState } from 'react'
+
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import ProductInput from './components/ProductInput';
 
 export default function App() {
+
+  const [ productList, setProductList ] = useState([])
+
+  const addProductHandler = (productName, productQuantity) => {
+
+    setProductList( currentItems => [
+      ...currentItems, 
+      {name: productName, quantity: productQuantity}
+    ])
+
+  }
+
   return (
     <View style={styles.container}>
       
       <View style={styles.productSpace}>
 
-        <Text>Product Input</Text>
+        <ProductInput onProductAdd={addProductHandler}/>
 
       </View>
 
@@ -34,9 +49,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',   
+    width: '100%',
+    backgroundColor: '#BF7226',
   },  
   product : {
     flex : 3, 
@@ -49,15 +65,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   productSpace : {
-    flex:1,
-    alignContent: 'center',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: '#77B80A',
-    width: '80%',
-    height: 80,
-    borderRadius: 10,
-    marginTop: 45
+    flex: 1.25
   },
   clearContainer: {
     alignItems: 'center',
