@@ -1,16 +1,44 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 
 const ListItem = ({productName, productQuantity}) => {
   return (
     
-        <View>
+    <View style={styles.item} >
 
-            <Text style={{fontSize: 18}}>{productName}</Text>
-            <Text style={{fontSize: 18}}>{productQuantity}</Text>
+    <Image style={styles.productImage} source={require('../assets/grocery.png')}/>
+
+        <View style={{fontSize:18}}>
+
+            <Text>{productName}</Text>
+            <Text>{productQuantity}</Text>
 
         </View>
 
+    </View> 
+
   )
 }
+
+const styles = StyleSheet.create({
+    item: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      borderColor: 'black',
+      borderWidth: 2,
+      borderRadius: 12,
+      padding : 5,
+      paddingHorizontal: 30,
+      backgroundColor: '#77B80A',
+      marginBottom: 15
+    },
+    productImage: {
+      width: 60,
+      height: 60,
+      marginRight: 75
+    },
+    productDates: {
+      fontSize: 18,
+    }
+})
 
 export default ListItem
