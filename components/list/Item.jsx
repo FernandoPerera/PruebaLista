@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, Image } from 'react-native'
 
-const ListItem = ({productName, productQuantity}) => {
+const Item = ({productName, productQuantity}) => {
   return (
     
     <View style={styles.item} >
 
-    <Image style={styles.productImage} source={require('../assets/grocery.png')}/>
+    <Image style={styles.productImage} source={require('../../assets/grocery.png')}/>
 
         <View style={{fontSize:18}}>
 
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ListItem
+export default Item

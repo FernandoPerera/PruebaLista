@@ -1,8 +1,11 @@
 import { useState } from 'react'
-import { ScrollView, StyleSheet, Text, View, Pressable } from 'react-native';
-import ProductInput from './components/ProductInput';
+import { ScrollView, StyleSheet, Text, View, Pressable } from 'react-native'
 
-import ListItem from './components/ListItem';
+import ProductInput from './components/Input/ProductInput'
+import ListItem from './components/list/ListItem'
+
+import 'react-native-get-random-values'
+import uuid from 'react-native-uuid'
 
 export default function App() {
 
@@ -12,7 +15,7 @@ export default function App() {
 
     setProductList( currentItems => [
       ...currentItems, 
-      {name: productName, quantity: productQuantity}
+      {id: uuid.v4(), name: productName, quantity: productQuantity}
     ])
 
   }
@@ -35,20 +38,16 @@ export default function App() {
                     <Text style={styles.emptyText}>Aún no hay productos</Text>
                   </View>
 
-                : productList.map( (product, index) => (
-                  <ListItem
-                    key={index}
-                    productName={product.name}
-                    productQuantity={product.quantity}/>
-                  ))}
+                :  <ListItem productList={productList}/>}
             
-          </ScrollView>
+            
+      </ScrollView>
 
       </View>
 
       <Pressable style={styles.clearContainer}>
 
-        <View style={styles.clearText}>
+        <View style={styles.clearList}>
 
           <Text>Clear</Text>
 
@@ -82,11 +81,25 @@ const styles = StyleSheet.create({
   productSpace : {
     flex: 1.25
   },
+  emptyList : {
+    alignItems: 'center',
+    width: '90%',
+    borderWidth: 2,
+    borderRadius: 12,
+    backgroundColor: '#77B80A',
+    margin: 10,
+    padding: 10,
+  },
+  emptyText : {
+    fontSize: 18,
+    padding: 5,
+    color: '#395012'
+  },
   clearContainer: {
     alignItems: 'center',
     flex: 0.5,
   },
-  clearText: {
+  clearList: {
     padding: 15,
     width: '90%',
     borderWidth: 2,
