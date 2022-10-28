@@ -1,28 +1,37 @@
 import { useState } from 'react'
-import { Button, StyleSheet, TextInput, View } from 'react-native';
+import { Button, StyleSheet, TextInput, View } from 'react-native'
+
+import Dropdown from './DropdownType';
 
 const ProductInput = ({ onProductAdd }) => {
 
   const [ product, setProduct ] = useState({
     name:'',
     quantity: 0,
+    type:'',
     bought: false
   })
 
   const changeTextHandler= (value) => {
     setProduct(
-      {name: value, quantity: product.quantity} 
+      {name: value, quantity: product.quantity, type: product.type} 
     )
   }
 
   const changeQuantityHandler= (value) => {
     setProduct(
-      {name: product.name, quantity: value}
+      {name: product.name, quantity: value, type: product.type}
+    )
+  }
+
+  const changeTypeHandler= (value) => {
+    setProduct(
+      {name: product.name, quantity: product.quantity, type: value }
     )
   }
 
   const addProductHandler = () => {
-      onProductAdd(product.name, product.quantity)
+      onProductAdd(product.name, product.quantity, product.type)
     
       setProduct('')
   } 
@@ -49,10 +58,10 @@ const ProductInput = ({ onProductAdd }) => {
 
       <View style={ {flexDirection:'row'} }>
 
-      <TextInput style={ styles.productType }
-        placeholder='Type'
-        keyboardType='numeric'
-        />
+      <View style={{flex:1, marginHorizontal: 15}}>
+        <Dropdown changeTypeHandler={changeTypeHandler} product={product}/>
+      </View>
+      
 
       <View style={styles.addButton}>
         <Button 

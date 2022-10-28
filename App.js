@@ -11,11 +11,11 @@ export default function App() {
 
   const [ productList, setProductList ] = useState([])
 
-  const addProductHandler = (productName, productQuantity) => {
+  const addProductHandler = (productName, productQuantity, productType) => {
 
     setProductList( currentItems => [
       ...currentItems, 
-      {id: uuid.v4(), name: productName, quantity: productQuantity}
+      {id: uuid.v4(), name: productName, quantity: productQuantity, type: productType}
     ])
 
   }
