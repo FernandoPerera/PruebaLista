@@ -1,7 +1,7 @@
 import { View } from 'react-native'
 import Item from './Item'
 
-const ListItem = ({ removeProductHandler, productList }) => {
+const ListItem = ({ productList }) => {
   
         {console.log('List Item -> ', productList)}
   return (

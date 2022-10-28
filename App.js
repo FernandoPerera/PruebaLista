@@ -9,8 +9,6 @@ import uuid from 'react-native-uuid'
 
 export default function App() {
 
-  // PROSEGUIR CON EL TYPE EN LAS IMAGENES
-
   const [ productList, setProductList ] = useState([])
 
   const addProductHandler = (productName, productQuantity, productType) => {
@@ -45,7 +43,6 @@ export default function App() {
                   </View>
 
                 :  <ListItem productList={productList}/>}
-            
             
       </ScrollView>
 

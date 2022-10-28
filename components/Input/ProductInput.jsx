@@ -31,9 +31,14 @@ const ProductInput = ({ onProductAdd }) => {
   }
 
   const addProductHandler = () => {
+
+    if (product.name == '' || product.quantity == '' || product.type == '') {
+      alert('Debe rellenar todas las casillas')
+    } else {
       onProductAdd(product.name, product.quantity, product.type)
-    
-      setProduct('')
+      setProduct({ name:'', quantity:'', type:'' })
+    }
+      
   } 
 
   return (
@@ -62,11 +67,11 @@ const ProductInput = ({ onProductAdd }) => {
         <Dropdown changeTypeHandler={changeTypeHandler} product={product}/>
       </View>
       
-
       <View style={styles.addButton}>
         <Button 
           title='Añadir' 
-          onPress={addProductHandler}/>
+          onPress={addProductHandler}
+        />
       </View>
 
       </View>
