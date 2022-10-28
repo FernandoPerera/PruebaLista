@@ -25,7 +25,7 @@ const DropdownType = ({ changeTypeHandler, product }) => {
         data={type}
         value={ product.type }   
         onChange={ changeTypeHandler }
-        
+
       />
 
     </>
@@ -37,8 +37,6 @@ const styles = StyleSheet.create({
     height: 50,
     width: 100,
     backgroundColor: '#E8B775',
-    borderColor: 'gray', 
-    borderWidth: 0.5,
     borderRadius: 8,
     paddingHorizontal: 8,
   },

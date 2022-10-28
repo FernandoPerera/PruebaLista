@@ -13,7 +13,8 @@ const ListItem = ({ removeProductHandler, productList }) => {
             key={product.id}
             id={product.id} 
             productName={product.name}
-            productQuantity={product.quantity}/>
+            productQuantity={product.quantity}
+            productType={product.type}/>
           ))
       }
     </View>

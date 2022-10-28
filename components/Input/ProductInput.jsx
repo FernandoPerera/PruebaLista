@@ -26,7 +26,7 @@ const ProductInput = ({ onProductAdd }) => {
 
   const changeTypeHandler= (value) => {
     setProduct(
-      {name: product.name, quantity: product.quantity, type: value }
+      {name: product.name, quantity: product.quantity, type: value.value }
     )
   }
 
