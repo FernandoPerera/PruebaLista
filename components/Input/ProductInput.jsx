@@ -34,11 +34,13 @@ const ProductInput = ({ onProductAdd }) => {
 
     if (product.name == '' || product.quantity == '' || product.type == '') {
       alert('Debe rellenar todas las casillas')
-    } else {
+    }  else if (product.quantity > 10 || product.quantity <= 0) {
+      alert('La cantidad no puede ser mayor que 10')
+    }else {
       onProductAdd(product.name, product.quantity, product.type)
-      setProduct({ name:'', quantity:'', type:'' })
     }
-      
+
+    setProduct({ name:'', quantity:'', type:'' })
   } 
 
   return (

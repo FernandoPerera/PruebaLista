@@ -14,7 +14,8 @@ const ListItem = ({ productList }) => {
             id={product.id} 
             productName={product.name}
             productQuantity={product.quantity}
-            productType={product.type}/>
+            productType={product.type}
+            productBought={product.bought}/>
           ))
       }
     </View>

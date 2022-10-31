@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 
-const Item = ({ productName, productQuantity, productType }) => {
+const Item = ({ productName, productQuantity, productType, productBought }) => {
 
   const imageType = (type) => {
 
@@ -10,21 +10,20 @@ const Item = ({ productName, productQuantity, productType }) => {
 
       case 'Fruit':
         return <Image style={styles.productImage} source={require('../../assets/apple.png')}/>
-        break;
       case 'Vegetable':
         return <Image style={styles.productImage} source={require('../../assets/cart.png')}/>
-        break;
       case 'Backery':
         return <Image style={styles.productImage} source={require('../../assets/croissant.png')}/>
-      break;
       case 'Fish':
         return <Image style={styles.productImage} source={require('../../assets/fish.png')}/>
-      break;
       case 'Meat':
         return <Image style={styles.productImage} source={require('../../assets/meat.png')}/>
-        break;
     }
 
+  }
+
+  const purchasedProduct = () => {
+    productBought = true
   }
   return (
     
@@ -34,12 +33,21 @@ const Item = ({ productName, productQuantity, productType }) => {
       imageType(productType)
     }
 
-        <View style={styles.productDates}>
+        <Pressable onPress={purchasedProduct}>
+
+          <View style={styles.productDates}>
 
             <Text>Producto: {productName}</Text>
             <Text>Cantidad: {productQuantity}</Text>
+            {
+              productBought == true
+                ? <Text style={{color: '#77B80A'}}>Comprado</Text>
+                : null
+            }
 
-        </View>
+          </View>
+
+        </Pressable>
 
     </View> 
 
